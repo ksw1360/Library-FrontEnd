@@ -31,7 +31,7 @@ export default function RootLayout({
         </header>
         <main className="max-w-screen-md mx-auto py-8 px-4">{children}</main>
         <footer className="py-8 border-t text-center text-gray-500">
-          <p>© 2026 도서관 관리 시스템 - Spring Boot + H2 DB 연동</p>
+          <p>© 2026 도서관 관리 시스템 - Spring Boot + Mysql DB 연동</p>
         </footer>
       </body>
     </html>
