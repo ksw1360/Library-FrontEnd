@@ -13,8 +13,6 @@ interface Book {
 
 const BASE_URL =
   "http://library-backend-env.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com";
-// "http://library-backend-env-1.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com";
-//  http://library-backend-env.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com"
 
 export default function Home() {
   const [bookList, setBookList] = useState<Book[]>([]);
@@ -82,6 +80,22 @@ export default function Home() {
       }
     } catch (error) {
       console.error("삭제 에러:", error);
+    }
+  };
+
+  // 반납
+  const handleReturn = async (id: number) => {
+    try {
+      const res = await fetch(`${BASE_URL}/books/${id}/return`, {
+        method: "PATCH",
+      });
+      if (res.ok) {
+        fetchBooks();
+      } else {
+        alert("반납 처리 실패!");
+      }
+    } catch (error) {
+      console.error("반납 에러:", error);
     }
   };
 
@@ -167,12 +181,19 @@ export default function Home() {
                 </td>
                 <td className="p-3">
                   <div className="flex gap-2">
-                    {book.available && (
+                    {book.available ? (
                       <button
                         onClick={() => handleLoan(book.id)}
                         className="px-3 py-1 bg-blue-50 text-blue-600 border border-blue-200 text-xs font-semibold rounded hover:bg-blue-100 transition-colors"
                       >
                         대출
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleReturn(book.id)}
+                        className="px-3 py-1 bg-green-50 text-green-600 border border-green-200 text-xs font-semibold rounded hover:bg-green-100 transition-colors"
+                      >
+                        반납
                       </button>
                     )}
                     <button
