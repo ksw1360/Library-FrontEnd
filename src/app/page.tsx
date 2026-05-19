@@ -12,7 +12,9 @@ interface Book {
 }
 
 const BASE_URL =
-  "http://library-backend-env-1.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com";
+  "http://library-backend-env.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com";
+// "http://library-backend-env-1.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com";
+//  http://library-backend-env.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com"
 
 export default function Home() {
   const [bookList, setBookList] = useState<Book[]>([]);
