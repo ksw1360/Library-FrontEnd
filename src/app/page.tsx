@@ -11,7 +11,8 @@ interface Book {
   available: boolean;
 }
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL =
+  "http://http://library-backend-env-1.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com:5000";
 
 export default function Home() {
   const [bookList, setBookList] = useState<Book[]>([]);
