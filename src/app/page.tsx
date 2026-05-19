@@ -59,6 +59,7 @@ export default function Home() {
       });
       if (res.ok) {
         fetchBooks();
+        alert("대출 처리가 완료되었습니다! 📚");
       } else {
         alert("대출 처리 실패!");
       }
@@ -75,6 +76,7 @@ export default function Home() {
       });
       if (res.status === 204) {
         fetchBooks();
+        alert("도서가 삭제되었습니다.");
       } else {
         alert("삭제 실패!");
       }
@@ -91,6 +93,7 @@ export default function Home() {
       });
       if (res.ok) {
         fetchBooks();
+        alert("반납 처리가 완료되었습니다! 📖");
       } else {
         alert("반납 처리 실패!");
       }
