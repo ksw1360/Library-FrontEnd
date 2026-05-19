@@ -12,7 +12,9 @@ interface Book {
   available: boolean;
 }
 
-const BASE_URL = "http://localhost:9092";
+const BASE_URL =
+  "http://library-backend-env.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com";
+//"http://localhost:9092";
 
 export default function BookDetail({
   params,
@@ -127,7 +129,9 @@ export default function BookDetail({
       </div>
 
       <div className="border-b-2 border-gray-100 pb-4 mb-6">
-        <label className="text-xs font-semibold text-gray-500 mb-1 block">도서명</label>
+        <label className="text-xs font-semibold text-gray-500 mb-1 block">
+          도서명
+        </label>
         <input
           type="text"
           value={title}
@@ -138,7 +142,9 @@ export default function BookDetail({
 
       <div className="flex flex-col gap-4 mb-6">
         <div>
-          <label className="text-xs font-semibold text-gray-500 mb-1 block">저자</label>
+          <label className="text-xs font-semibold text-gray-500 mb-1 block">
+            저자
+          </label>
           <input
             type="text"
             value={author}
@@ -147,7 +153,9 @@ export default function BookDetail({
           />
         </div>
         <div>
-          <label className="text-xs font-semibold text-gray-500 mb-1 block">가격</label>
+          <label className="text-xs font-semibold text-gray-500 mb-1 block">
+            가격
+          </label>
           <input
             type="text"
             value={price ? Number(price).toLocaleString() + "원" : "-"}

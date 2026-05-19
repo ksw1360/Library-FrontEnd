@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const BASE_URL = "http://localhost:9092";
+const BASE_URL =
+  "http://library-backend-env.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com";
+// "http://localhost:9092";
 
 export default function AddBook() {
   const router = useRouter();
@@ -104,7 +106,9 @@ export default function AddBook() {
         {/* 대출 상태 안내 */}
         <div className="flex items-center gap-2 p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-700">
           <span>✅</span>
-          <span>등록 시 기본적으로 <strong>대출 가능</strong> 상태로 설정됩니다.</span>
+          <span>
+            등록 시 기본적으로 <strong>대출 가능</strong> 상태로 설정됩니다.
+          </span>
         </div>
       </div>
 
