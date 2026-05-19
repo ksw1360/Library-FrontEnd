@@ -11,7 +11,7 @@ interface Book {
   available: boolean;
 }
 
-const BASE_URL = "http://localhost:9092";
+const BASE_URL = "http://localhost:5000";
 
 export default function Home() {
   const [bookList, setBookList] = useState<Book[]>([]);
@@ -46,8 +46,8 @@ export default function Home() {
       bookList.filter(
         (b) =>
           b.title.toLowerCase().includes(lower) ||
-          b.author.toLowerCase().includes(lower)
-      )
+          b.author.toLowerCase().includes(lower),
+      ),
     );
   };
 
