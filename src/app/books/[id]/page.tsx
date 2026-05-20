@@ -12,7 +12,8 @@ interface Book {
   available: boolean;
 }
 
-//const BASE_URL = "http://library-backend-env.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com";
+const BASE_URL =
+  "https://library-backend-env.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com";
 const BASE_URL = "https://api.ksw1360.asia";
 
 export default function BookDetail({
