@@ -1,5 +1,6 @@
 "use client";
 
+import { API_ENDPOINTS } from "@/config/api";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -10,7 +11,7 @@ interface Book {
   price: number | null;
   available: boolean;
 }
-const BASE_URL = "./env.production"; // 배포 환경에서는 .env.production 파일의 값을 사용
+const BASE_URL = "https://api.ksw1360.asia";
 
 export default function Home() {
   const [bookList, setBookList] = useState<Book[]>([]);
@@ -24,7 +25,8 @@ export default function Home() {
 
   const fetchBooks = async () => {
     try {
-      const res = await fetch(`${BASE_URL}/books`);
+      //const res = await fetch(`${BASE_URL}/books`);
+      const res = await fetch(API_ENDPOINTS.books);
       const data = await res.json();
       setBookList(data || []);
       setFilteredList(data || []);
