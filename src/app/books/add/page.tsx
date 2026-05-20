@@ -4,9 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const BASE_URL =
-  "https://library-backend-env.eba-2pqx7bjy.ap-northeast-2.elasticbeanstalk.com";
-const BASE_URL = "https://api.ksw1360.asia";
+const BASE_URL = "./env.production"; // 배포 환경에서는 .env.production 파일의 값을 사용
 
 export default function AddBook() {
   const router = useRouter();

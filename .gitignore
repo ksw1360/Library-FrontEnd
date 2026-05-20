@@ -73,4 +73,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# BackEnd Url
+.env.local
+.env*.local
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,nextjs,database
