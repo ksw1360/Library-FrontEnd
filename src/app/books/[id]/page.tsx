@@ -1,5 +1,6 @@
 "use client";
 
+import { API_ENDPOINTS } from "@/config/api";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { use, useEffect, useState } from "react";
@@ -11,8 +12,6 @@ interface Book {
   price: number | null;
   available: boolean;
 }
-
-const BASE_URL = "https://api.ksw1360.asia";
 
 export default function BookDetail({
   params,
@@ -32,7 +31,7 @@ export default function BookDetail({
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await fetch(`${BASE_URL}/books/${id}`);
+        const res = await fetch(API_ENDPOINTS.books.detail(id));
         if (res.ok) {
           const data: Book = await res.json();
           setBook(data);
@@ -54,7 +53,7 @@ export default function BookDetail({
   const handleLoan = async () => {
     if (!book?.available) return;
     try {
-      const res = await fetch(`${BASE_URL}/books/${id}/loan`, {
+      const res = await fetch(API_ENDPOINTS.books.loan(id), {
         method: "PATCH",
       });
       if (res.ok) {
@@ -72,7 +71,7 @@ export default function BookDetail({
   const handleDelete = async () => {
     if (!confirm("정말 삭제하시겠습니까? 🗑️")) return;
     try {
-      const res = await fetch(`${BASE_URL}/books/${id}`, {
+      const res = await fetch(API_ENDPOINTS.books.delete(id), {
         method: "DELETE",
       });
       if (res.status === 204) {
@@ -102,7 +101,7 @@ export default function BookDetail({
   const handleUpdate = async () => {
     if (!confirm("수정하시겠습니까?")) return;
     try {
-      const res = await fetch(`${BASE_URL}/books/${id}`, {
+      const res = await fetch(API_ENDPOINTS.books.update(id), {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

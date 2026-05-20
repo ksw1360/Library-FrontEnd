@@ -1,10 +1,9 @@
 "use client";
 
+import { API_ENDPOINTS } from "@/config/api";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
-const BASE_URL = "https://api.ksw1360.asia";
 
 export default function AddBook() {
   const router = useRouter();
@@ -28,7 +27,7 @@ export default function AddBook() {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch(`${BASE_URL}/books`, {
+      const res = await fetch(API_ENDPOINTS.books.create, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bookData),

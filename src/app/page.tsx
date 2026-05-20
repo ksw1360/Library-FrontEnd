@@ -11,7 +11,6 @@ interface Book {
   price: number | null;
   available: boolean;
 }
-const BASE_URL = "https://api.ksw1360.asia";
 
 export default function Home() {
   const [bookList, setBookList] = useState<Book[]>([]);
@@ -25,8 +24,7 @@ export default function Home() {
 
   const fetchBooks = async () => {
     try {
-      //const res = await fetch(`${BASE_URL}/books`);
-      const res = await fetch(API_ENDPOINTS.books);
+      const res = await fetch(API_ENDPOINTS.books.list);
       const data = await res.json();
       setBookList(data || []);
       setFilteredList(data || []);
@@ -54,7 +52,7 @@ export default function Home() {
 
   const handleLoan = async (id: number) => {
     try {
-      const res = await fetch(`${BASE_URL}/books/${id}/loan`, {
+      const res = await fetch(API_ENDPOINTS.books.loan(id), {
         method: "PATCH",
       });
       if (res.ok) {
@@ -71,7 +69,7 @@ export default function Home() {
   const handleDelete = async (id: number) => {
     if (!confirm("정말 삭제하시겠습니까?")) return;
     try {
-      const res = await fetch(`${BASE_URL}/books/${id}`, {
+      const res = await fetch(API_ENDPOINTS.books.delete(id), {
         method: "DELETE",
       });
       if (res.status === 204) {
@@ -88,7 +86,7 @@ export default function Home() {
   // 반납
   const handleReturn = async (id: number) => {
     try {
-      const res = await fetch(`${BASE_URL}/books/${id}/return`, {
+      const res = await fetch(API_ENDPOINTS.books.return(id), {
         method: "PATCH",
       });
       if (res.ok) {
